@@ -2,6 +2,7 @@
     "name": "zhkx1994/laravel-admin-ext-tree-table",
     "description": "laravel-admin-ext-tree-table",
     "type": "library",
+    "version": "1.0.0",
     "keywords": ["laravel-admin", "extension", "tree-table"],
     "homepage": "https://github.com/",
     "license": "MIT",
