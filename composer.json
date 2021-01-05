@@ -1,0 +1,33 @@
+{
+    "name": "zhkx1994/laravel-admin-ext-tree-table",
+    "description": "laravel-admin-ext-tree-table",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "tree-table"],
+    "homepage": "https://github.com/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zhkx1994",
+            "email": ""
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zhkx1994\\TreeTable\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zhkx1994\\TreeTable\\TreeTableServiceProvider"
+            ]
+        }
+    }
+}
