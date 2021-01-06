@@ -85,8 +85,8 @@
                     initialState: initialState,// 所有节点都折叠
                     // initialState: 'expanded',// 所有节点都展开，默认展开
                     treeColumn: 1,
-                    expanderExpandedClass: 'glyphicon glyphicon-minus',  //图标样式
-                    expanderCollapsedClass: 'glyphicon glyphicon-plus',
+                    expanderExpandedClass: 'glyphicon glyphicon-menu-right',  //图标样式
+                    expanderCollapsedClass: 'glyphicon glyphicon-menu-down',
                     cardView: false,                    //是否显示详细视图
                     detailView: false,                   //是否显示父子表
                     onChange: function() {
