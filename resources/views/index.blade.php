@@ -59,6 +59,8 @@
     operatesJsonStr = escape2Html(operatesJsonStr);
     var operates = JSON.parse(operatesJsonStr);
 
+    var initialState = '{{ $initialState }}';
+
     //转意符换成普通字符
     function escape2Html(str) {
         var arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
@@ -80,7 +82,7 @@
             // search: true,
             onResetView: function(data) {
                 $table.treegrid({
-                    initialState: 'collapsed',// 所有节点都折叠
+                    initialState: initialState,// 所有节点都折叠
                     // initialState: 'expanded',// 所有节点都展开，默认展开
                     treeColumn: 1,
                     expanderExpandedClass: 'glyphicon glyphicon-minus',  //图标样式

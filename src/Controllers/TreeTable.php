@@ -4,21 +4,50 @@ namespace Zhkx1994\TreeTable\Controllers;
 
 class TreeTable
 {
+    /**
+     * 数据
+     */
     protected $data;
 
+    /**
+     * 展示行
+     */
     protected $columns;
 
+    /**
+     * 操作
+     */
     protected $operates = [];
 
+    /**
+     * 新增按钮
+     */
     protected $createBtn = true;
 
+    /**
+     * 编辑按钮
+     */
     protected $editBtn = true;
 
+    /**
+     * 显示详情按钮
+     */
     protected $showBtn = true;
 
+    /**
+     * 删除按钮
+     */
     protected $deleteBtn = true;
 
+    /**
+     * 工具按钮
+     */
     protected $tools = [];
+
+    /**
+     * 树形初始状态 collapsed 折叠，expanded 展开
+     */
+    protected $initialState = 'collapsed';
 
     public function __construct($data)
     {
@@ -30,6 +59,25 @@ class TreeTable
 //        $this->columns[] = ['field' => 'check', 'checkbox' => true, 'formatter' => 'checkFormatter'];
     }
 
+    /**
+     * 设置初始状态展开
+     */
+    public function setInitialStateExpanded()
+    {
+        $this->initialState = 'expanded';
+    }
+
+    /**
+     * 设置初始状态折叠
+     */
+    public function setInitialStateCollapsed()
+    {
+        $this->initialState = 'collapsed';
+    }
+
+    /**
+     * 添加工作区按钮
+     */
     public function addToolBtn($text, $url, $class = '')
     {
         $this->tools[] = [
@@ -39,11 +87,13 @@ class TreeTable
         ];
     }
 
+    /**
+     * 自定义展示样式
+     */
     public function display($fun)
     {
         $index = count($this->columns) - 1;
         $field = $this->columns[$index]['field'];
-//        $this->columns[$index]['formatter'] = 'imageFormatter';
 
         foreach ($this->data as & $datum) {
             $content = $fun($datum[$field]);
@@ -62,7 +112,9 @@ class TreeTable
         return $this;
     }
 
-
+    /**
+     * 图片处理
+     */
     public function image($width = '', $height = '')
     {
         $index = count($this->columns) - 1;
@@ -179,7 +231,11 @@ class TreeTable
         // 删除按钮
         if ($this->deleteBtn) {
         }
+    }
 
+    public function render()
+    {
+        // 设置操作栏
         if (!empty($this->operates)) {
             $this->columns[] = [
                 'field' => 'operate',
@@ -188,14 +244,12 @@ class TreeTable
                 'formatter' => 'operateFormatter',
             ];
         }
-    }
 
-    public function render()
-    {
         return view('treetable::index', [
             'data' => $this->data,
             'columns' => $this->columns,
             'operates' => $this->operates,
+            'initialState' => $this->initialState,
             'tools' => $this->tools,
         ]);
     }
